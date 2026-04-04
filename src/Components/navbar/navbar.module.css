@@ -1,0 +1,106 @@
+.navbar {
+    padding: 15px 40px;
+    /* background-color: red; */
+}
+
+.navMain {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navLogoBox {
+    width: 75px;
+    height: 75px;
+    align-items: center;
+}
+
+.navLogoBox a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.navLinkBox {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 998px) {
+        display: none;
+    }
+}
+
+.navLink {
+    color: black;
+    font-size: 17px;
+    text-decoration: none;
+    &:hover {
+        color: navy;
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+.navLinkActive {
+    color: rgba(199, 11, 199, 0.474);
+    font-size: 17px;
+    text-decoration: none;
+    position: relative;
+    &:hover {
+        color: navy;
+        transition: all 0.5s ease-in-out;
+    }
+    &::after {
+        content: '';
+        width: 65%;
+        height: 2px;
+        background-color: rgba(199, 11, 199, 0.474);
+        position: absolute;
+        bottom: -4px;
+        left: 15%;
+    }
+}
+
+.navBurger {
+    display: none;
+    cursor: pointer;
+
+
+    @media (max-width: 998px) {
+        display: block;
+    }
+
+    & > span{
+        font-size: 40px;
+    }    
+}
+
+.navbarMobile{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:#00000020;
+    z-index: 10;
+}
+.navbarMobileHidden{
+    display: none;
+}
+.navbarMobileContent{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    padding: 20px;
+
+    .navMobileTop{
+
+        & > i{
+            font-size: 40px;
+            cursor: pointer;
+        }
+    }
+}
