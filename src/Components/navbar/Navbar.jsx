@@ -1,15 +1,11 @@
 import css from './navbar.module.css'
 import { NavLink, Outlet } from 'react-router-dom';
 import logo from '../../assets/images/ecomLogo.png'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import NavbarMobile from './NavbarMobile';
 
 const Navbar = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
-
-  useEffect(() => {
-    
-  }, []);
   return (
     <>
       <div className={css.navbar}>

@@ -1,7 +1,3 @@
-
-
-
-import React from 'react';
 import css from './navbar.module.css';
 
 const NavbarMobile = (props) => {
