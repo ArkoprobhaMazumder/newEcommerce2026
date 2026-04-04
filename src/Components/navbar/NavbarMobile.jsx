@@ -2,7 +2,7 @@
 
 
 import React from 'react';
-import css from './navbar.module.css'
+import css from './navbar.module.css';
 
 const NavbarMobile = (props) => {
     const { visible,setShowMobileNav } = props;
