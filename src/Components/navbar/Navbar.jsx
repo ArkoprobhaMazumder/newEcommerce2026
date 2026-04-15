@@ -30,6 +30,16 @@ const Navbar = () => {
               CONTACT
             </NavLink>
           </ul>
+
+          <div className={css.navUtilityBox}>
+            <div className={css.navUserProfile}>
+              <div className={css.userLogoBox}>
+                <i className="fa-solid fa-circle-user"></i>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile hamburger menu Responsive */}
           <div className={css.navBurger} onClick={()=>setShowMobileNav(true)}>
             <span className="material-symbols-outlined">menu</span>
           </div>
