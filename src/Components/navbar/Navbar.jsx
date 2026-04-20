@@ -33,8 +33,22 @@ const Navbar = () => {
 
           <div className={css.navUtilityBox}>
             <div className={css.navUserProfile}>
+              <div className={css.searchLogoBox}>
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </div>
               <div className={css.userLogoBox}>
                 <i className="fa-solid fa-circle-user"></i>
+                <div className={css.userProfileContainer}>
+                  <NavLink to='/about' className={({ isActive }) => isActive ? 'fw-bold fs-5' : 'fw-bold fs-5'}>
+                    Profile
+                  </NavLink>
+                  <NavLink to='/order' className={({ isActive }) => isActive ? 'fw-bold fs-5' : 'fw-bold fs-5'}>
+                    Orders
+                  </NavLink>
+                  <NavLink to='/login' className={({ isActive }) => isActive ? 'fw-bold fs-5' : 'fw-bold fs-5'}>
+                    Logout
+                  </NavLink>
+                </div>
               </div>
             </div>
           </div>

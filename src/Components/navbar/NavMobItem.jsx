@@ -25,6 +25,15 @@ const NavMobItem = () => {
                     <NavLink to='/contact' className={({ isActive }) => isActive ? css.navLinkActiveMob : 'fw-bold fs-5'}>
                         Contact
                     </NavLink>
+                    <NavLink to='/' className={({ isActive }) => isActive ? css.navLinkActiveMob : 'fw-bold fs-5'}>
+                        <div className={css.searchLogoBox}>
+                            <i className="fa-solid fa-circle-user"></i>
+                            <span>Profile</span>
+                        </div>
+                    </NavLink>
+                    <NavLink to='/login' className={({ isActive }) => isActive ? css.navLinkActiveMob : 'fw-bold fs-5'}>
+                        Logout
+                    </NavLink>
                 </div>
             </div>
         </div>

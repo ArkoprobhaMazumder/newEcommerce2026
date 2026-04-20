@@ -24,7 +24,7 @@
 
 .navLinkBox {
     display: flex;
-    gap: 20px;
+    gap: 50px;
     align-items: center;
     justify-content: center;
 
@@ -66,6 +66,115 @@
     }
 }
 
+.navUtilityBox {
+
+    @media(max-width: 998px) {
+        display: none;
+    }
+}
+
+.navUserProfile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    .searchLogoBox {
+        cursor: pointer;
+
+
+        @media(max-width: 576px) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px !important;
+        }
+
+        & i {
+            font-size: 30px;
+
+            @media(max-width: 576px) {
+                font-size: 15px;
+            }
+        }
+    }
+
+    .userLogoBox {
+        cursor: pointer;
+        position: relative;
+
+        .userProfileContainer {
+            position: absolute;
+            top: 34px;
+            right: -15px;
+            width: 150px;
+            background-color: white;
+            padding: 10px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            background: rgb(134, 147, 159);
+            animation: fadeUp 0.8s ease-in-out;
+            border-radius: 10px;
+
+            &::before {
+                content: '';
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid rgb(134, 147, 159);
+                position: absolute;
+                top: -8px;
+                right: 23px;
+
+            }
+
+
+            & p {
+                color: black;
+                text-decoration: none;
+                font-size: 14px;
+
+                &:hover {
+                    color: navy;
+                    transition: all 0.5s ease-in-out;
+                }
+            }
+
+            &>a {
+                color: black !important;
+                text-decoration: none;
+
+                &:hover {
+                    color: rgba(199, 11, 199, 0.474) !important;
+                }
+            }
+        }
+
+        &:hover .userProfileContainer {
+            display: flex;
+        }
+
+        & i {
+            font-size: 30px;
+        }
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
 .navBurger {
     display: none;
     cursor: pointer;
@@ -103,7 +212,7 @@
     /* animation: name duration timing-function delay iteration-count direction fill-mode; */
     animation: fadeIn 0.5s ease-in-out;
 
-    
+
 
     .navMobileTop {
         position: relative;
@@ -122,11 +231,13 @@
         }
     }
 }
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
         transform: translateX(-100%);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -137,19 +248,19 @@
 .navMobileLinkBox {
     margin: 70px 0 0 0;
 
-    .navMobileLink{
+    .navMobileLink {
         display: flex;
         flex-direction: column;
         gap: 25px;
 
-        & a{
+        & a {
             color: black;
             text-decoration: none;
         }
     }
 }
 
-.navLinkActiveMob{
+.navLinkActiveMob {
     color: rgba(199, 11, 199, 0.474) !important;
     font-size: 22px;
     font-weight: bold;
