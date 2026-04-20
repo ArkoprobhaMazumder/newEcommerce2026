@@ -1,6 +1,6 @@
 import css from './navbar.module.css'
 import { NavLink, Outlet } from 'react-router-dom';
-import logo from '../../assets/images/ecomLogo.png'
+import { assets } from '../../assets/images/frontend_assets/assets';
 import { useState } from 'react';
 import NavbarMobile from './NavbarMobile';
 
@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className={css.navMain}>
           <div className={css.navLogoBox}>
             <NavLink to='/'>
-              <img src={logo} alt="FOREVER" loading='lazy' />
+              <img src={assets.logo} alt="FOREVER_LOGO" loading='lazy' />
             </NavLink>
           </div>
 

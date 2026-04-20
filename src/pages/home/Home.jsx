@@ -1,16 +1,10 @@
-import React, { useEffect } from 'react';
-import { useSelector,useDispatch } from 'react-redux';
-import { getProducts } from './home.duck';
+// import { products } from "../../assets/images/frontend_assets/assets";
+
 
 
 const Home = () => {
-   const dispatch = useDispatch();
-
-  useEffect(() => {
-    getProducts(dispatch);
-  },[])
   return (
-    <div>
+    <div className='container'>
       Home Component
     </div>
   )
