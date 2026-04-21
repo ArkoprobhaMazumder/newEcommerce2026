@@ -1,0 +1,47 @@
+
+
+.productCard{
+    width: 100%;
+    cursor: pointer;
+
+    .productImage{
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+
+        @media(max-width: 576px){
+                height: 230px;
+            }
+
+        &:hover > img{
+            transform: scale(1.10);
+            transition: all 0.3s ease-in-out;
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .productInfo{
+        padding-top: 7px;
+
+        .productName{
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+            color: gray;
+
+            @media(max-width: 576px){
+                line-height: 20px;
+            }
+        }
+
+        .productPrice{
+            font-size: 13px;
+            font-weight: 700;
+        }
+    }
+}
