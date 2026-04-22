@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { assets } from '../../assets/images/frontend_assets/assets';
 import { useState } from 'react';
 import NavbarMobile from './NavbarMobile';
+import Footer from '../footer/Footer';
 
 const Navbar = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
@@ -64,6 +65,7 @@ const Navbar = () => {
         </div>
       </div>
       <Outlet />
+      <Footer/>
     </>
   )
 }

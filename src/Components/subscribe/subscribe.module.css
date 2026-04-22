@@ -1,0 +1,59 @@
+.subscribeContainer {
+    width: 100%;
+    padding: 20px 0;
+    
+
+
+
+    .subscribeMain {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+
+        @media(max-width: 576px) {
+            width: 100%;
+        }
+
+
+        .subsTitle{
+            font-size: 20px;
+            color: #1e2939;
+            font-weight: 500;
+        }
+
+        .subsDesc{
+            font-size: 14px;
+            color: gray;
+            margin: 10px 0 0 0;
+        }
+
+        
+
+
+        .subscribeForm {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0 0 0;
+
+            &>input {
+                flex: 1;
+                padding: 6px 10px;
+            }
+
+            &>button {
+                border: none;
+                outline: none;
+                background: black;
+                text-transform: uppercase;
+                color: white;
+                padding: 10px 20px;
+                font-size: 13px;
+                letter-spacing: -0.5px;
+            }
+        }
+
+    }
+
+
+}

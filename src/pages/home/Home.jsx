@@ -1,6 +1,8 @@
 import { products, assets } from "../../assets/images/frontend_assets/assets";
 import Banner from "../../Components/banner/Banner";
+import Policy from "../../Components/policy/Policy";
 import Section from "../../Components/section/Section";
+import Subscribe from "../../Components/subscribe/Subscribe";
 
 
 
@@ -19,6 +21,10 @@ const Home = () => {
         sectionDesc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit auctor dui, sed efficitur ipsum."
         products={products.filter(product => product.bestseller === true).slice(2,6)}
       />
+
+      <Policy/>
+
+      <Subscribe/>
     </div>
   )
 }
