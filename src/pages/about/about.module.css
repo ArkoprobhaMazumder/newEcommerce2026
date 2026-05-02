@@ -39,6 +39,7 @@
 
         @media(max-width: 576px) {
             margin-top: 25px;
+            text-align: center;
         }
 
         &>p {
@@ -48,6 +49,12 @@
             font-size: 14px !important;
             line-height: 20px !important;
             padding: 10px 0px !important;
+
+            @media(max-width: 576px) {
+                width: 100%;
+                font-size: 12px !important;
+                line-height: 18px !important;
+            }
         }
     }
 
@@ -58,6 +65,10 @@
         & h4 {
             text-align: left;
             margin-bottom: 40px;
+
+            @media(max-width: 576px) {
+                text-align: center;
+            }
         }
 
         .aboutConds {
@@ -70,7 +81,7 @@
             .aboutDataBox {
                 width: 70%;
 
-                & p{
+                & p {
                     color: #6a7282 !important;
                     font-weight: 400 !important;
                     font-size: 11px !important;
