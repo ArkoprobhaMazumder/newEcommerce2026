@@ -241,21 +241,14 @@
 
 
     .navMobileTop {
-        position: relative;
+        /* margin-top: 40px; */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
         &>img {
-            position: absolute;
-            top: 10px;
-            right: 0;
-            z-index: 4;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-
-            @media(max-width: 576px) {
-                width: 20px;
-                height: 20px;
-            }
+            width: 25px;
+            height: 25px;
         }
     }
 }
@@ -279,7 +272,25 @@
     .navMobileLink {
         display: flex;
         flex-direction: column;
-        gap: 25px;
+        gap: 15px;
+
+        .cartNavBox{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            .cartItemCount{
+                width: 15px;
+                height: 15px;
+                background-color: #000;
+                color: white;
+                font-size: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+            }
+        }
 
         & a {
             color: black;
