@@ -1,0 +1,75 @@
+.signupContainer {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+
+
+    .signMain {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 40px;
+
+        @media(max-width:576px) {
+            width: 100%;
+        }
+
+        .signTitle {
+            font-size: 30px;
+            font-weight: 400;
+            margin-bottom: 20px;
+
+            &>span {
+                display: inline-block;
+                width: 38px;
+                height: 1.5px;
+                background-color: #000;
+                margin-bottom: 5px;
+            }
+        }
+
+        .signForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            @media(max-width:576px) {
+                padding: 20px 0;
+            }
+
+            .signInput {
+                width: 100%;
+                height: 40px;
+                margin-bottom: 20px;
+                padding-left: 10px;
+                font-size: 16px;
+            }
+
+            .signButton {
+                width: 30%;
+                height: 40px;
+                background-color: #000;
+                color: white;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+
+                @media(max-width:576px) {
+                    width: 50%;
+                }
+
+                &:hover {
+                    background-color: #fff;
+                    color: #000;
+                    border: 1px solid #000;
+                }
+            }
+        }
+    }
+}
