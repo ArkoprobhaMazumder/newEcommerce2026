@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import css from './signup.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { userSignUp } from './signup.duck';
+import { newUserSuccess, newUserPending, newUserError } from './signup.duck';
+import { ClipLoader } from "react-spinners";
+
+
+
 
 const SignUp = () => {
     const [userData, setUserData] = useState({
@@ -16,17 +21,28 @@ const SignUp = () => {
         err: null
     });
     const dispatch = useDispatch();
+    const { signup } = useSelector(state => state);
+    const { signupPending } = signup;
 
 
-    useEffect(()=>{
-        console.log(888,signupResponse);
-    },[signupResponse]);
+    useEffect(() => {
+        if (signupResponse.err) {
+            if (signupResponse.type === 'unknown') {
+                return window.alert(signupResponse.err);
+            }
+            return window.alert(signupResponse.err.errors || signupResponse.err.message);
+        } else {
+            console.log("Signup Success", signupResponse);
+        }
+    }, [signupResponse]);
 
 
     const handelSignupForm = async (e) => {
         e.preventDefault();
+        dispatch(newUserPending());
         const response = await userSignUp(userData);
         if (response.status !== 201) {
+            dispatch(newUserError(signupResponse.err));
             if (response.status !== 400) {
                 return setSignupResponse({
                     type: 'unknown',
@@ -34,10 +50,12 @@ const SignUp = () => {
                     err: response.statusText
                 })
             }
-            return setSignupResponse({ type: 'validation', data: null, err: response.data })
+            return setSignupResponse({ type: 'validation', data: null, err: response.data });
         }
-        return setSignupResponse({ type: 'successful user', data: response.data, err: null })
+        dispatch(newUserSuccess());
+        return setSignupResponse({ type: 'successful user', data: response.data, err: null });
     }
+
     return (
         <div className='container'>
             <div className={css.signupContainer}>
@@ -54,7 +72,22 @@ const SignUp = () => {
                         <div className={css.signInOptions}>
                             <a href="/login" className={css.createAccount}>Already have an account? Log in</a>
                         </div>
-                        <button type='submit' className={css.signButton}>Sign Up</button>
+                        <button type='submit' className={css.signButton}>
+                            {
+                                !signupPending
+                                    ?
+                                    'Sign Up'
+                                    : (
+                                        <ClipLoader
+                                            color={`#00`}
+                                            loading={signupPending}
+                                            size={20}
+                                            aria-label="Loading Spinner"
+                                            data-testid="loader"
+                                        />
+                                    )
+                            }
+                        </button>
                     </form>
                 </div>
 
