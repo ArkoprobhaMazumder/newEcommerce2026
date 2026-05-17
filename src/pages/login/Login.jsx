@@ -13,6 +13,10 @@ const Login = () => {
                             <option value="customer">Customer</option>
                             <option value="provider">Provider</option>
                         </select>
+                        <div className={css.signInOptions}>
+                            <a href="/signup" className={css.forgotPassword}>Forgot Password?</a>
+                            <a href="/signup" className={css.createAccount}>create account</a>
+                        </div>
                         <button type='submit' className={css.signButton}>Log In</button>
                     </form>
                 </div>

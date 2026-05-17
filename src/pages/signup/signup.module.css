@@ -51,6 +51,30 @@
                 font-size: 16px;
             }
 
+            .signInOptions {
+                display: flex;
+                justify-content:flex-end;
+                width: 100%;
+                margin-bottom: 20px;
+
+
+
+                .forgotPassword,
+                .createAccount {
+                    color: #000;
+                    text-decoration: none;
+                    font-size: 12px;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+
+                    @media(max-width:576px) {
+                        font-size: 10px;
+                    }
+                }
+            }
+
             .signButton {
                 width: 30%;
                 height: 40px;
