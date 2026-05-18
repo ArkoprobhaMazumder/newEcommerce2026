@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userSignUp } from './signup.duck';
 import { newUserSuccess, newUserPending, newUserError } from './signup.duck';
 import { ClipLoader } from "react-spinners";
+import { useNavigate } from 'react-router-dom';
+import { handelUser } from '../../helper/util';
 
 
 
@@ -13,7 +15,7 @@ const SignUp = () => {
         userName: '',
         email: '',
         password: '',
-        type: ''
+        type: 'customer'
     });
     const [signupResponse, setSignupResponse] = useState({
         type: '',
@@ -21,8 +23,8 @@ const SignUp = () => {
         err: null
     });
     const dispatch = useDispatch();
-    const { signup } = useSelector(state => state);
-    const { signupPending } = signup;
+    const navigate = useNavigate();
+    const { signupPending } = useSelector(state => state.signup);
 
 
     useEffect(() => {
@@ -32,33 +34,75 @@ const SignUp = () => {
             }
             return window.alert(signupResponse.err.errors || signupResponse.err.message);
         } else {
-            console.log("Signup Success", signupResponse);
+            console.log(signupResponse.data)
+            const response = handelUser(true, signupResponse.data);
+            if (response) {
+                navigate('/');
+            }
+            console.log(signupResponse.data);
         }
     }, [signupResponse]);
+
+    useEffect(() => {
+        if (!signupPending) return;
+
+        const prevent = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        };
+
+        window.addEventListener("keydown", prevent, true);
+        window.document.body.style.overflow = "hidden";
+
+        return () => {
+            window.removeEventListener("keydown", prevent, true);
+            window.document.body.style.overflow = "auto";
+        };
+    }, [signupPending]);
 
 
     const handelSignupForm = async (e) => {
         e.preventDefault();
-        dispatch(newUserPending());
-        const response = await userSignUp(userData);
-        if (response.status !== 201) {
-            dispatch(newUserError(signupResponse.err));
-            if (response.status !== 400) {
-                return setSignupResponse({
-                    type: 'unknown',
-                    data: null,
-                    err: response.statusText
-                })
+        try {
+            dispatch(newUserPending());
+            const response = await userSignUp(userData);
+            if (response.status !== 201) {
+                dispatch(newUserError(signupResponse.err));
+                if (response.status !== 400) {
+                    return setSignupResponse({
+                        type: 'unknown',
+                        data: null,
+                        err: response.statusText
+                    })
+                }
+                return setSignupResponse({ type: 'validation', data: null, err: response.data });
+            } else {
+                dispatch(newUserSuccess());
+                return setSignupResponse({ type: 'successful user', data: response.data, err: null });
             }
-            return setSignupResponse({ type: 'validation', data: null, err: response.data });
+
+        } catch (e) {
+            console.log("From Sign up Page", e);
+            dispatch(newUserError());
+            setSignupResponse({ type: 'unknown', data: null, err: 'Something Went wrong try after some time' });
+            setUserData({
+                userName: '',
+                email: '',
+                password: '',
+                type: 'customer'
+            })
         }
-        dispatch(newUserSuccess());
-        return setSignupResponse({ type: 'successful user', data: response.data, err: null });
     }
 
     return (
+
         <div className='container'>
             <div className={css.signupContainer}>
+                {
+                    signupPending && (
+                        <div className={css.wrapperLoading}></div>
+                    )
+                }
                 <div className={css.signMain}>
                     <h2 className={css.signTitle}>Sign Up <span></span></h2>
                     <form className={css.signForm} onSubmit={handelSignupForm}>
@@ -90,7 +134,6 @@ const SignUp = () => {
                         </button>
                     </form>
                 </div>
-
             </div>
         </div>
     )
