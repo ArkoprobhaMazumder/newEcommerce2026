@@ -8,9 +8,7 @@ export const handelUser = (newUser, result) => {
         const { data } = result;
         if (newUser) {
             const user = {
-                name: data.name,
-                email: data.email,
-                type: data.type
+                id: data._id
             }
             window.localStorage.setItem('user', JSON.stringify(user));
         } else {
@@ -19,4 +17,8 @@ export const handelUser = (newUser, result) => {
         return true;
     }
 
+}
+
+export const handelLogout=()=>{
+    window.localStorage.removeItem('user');
 }

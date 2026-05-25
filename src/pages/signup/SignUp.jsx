@@ -34,12 +34,10 @@ const SignUp = () => {
             }
             return window.alert(signupResponse.err.errors || signupResponse.err.message);
         } else {
-            console.log(signupResponse.data)
             const response = handelUser(true, signupResponse.data);
             if (response) {
                 navigate('/');
             }
-            console.log(signupResponse.data);
         }
     }, [signupResponse]);
 
