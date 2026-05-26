@@ -1,5 +1,6 @@
 
 import { NEW_USER_PENDING, NEW_USER_FULFILLED, NEW_USER_REJECTED } from "./actionCreator";
+import {apiBaseUrl} from '../helper/util';
 
 
 const initilState = {
@@ -33,16 +34,18 @@ export default function userReducer(state = initilState, action) {
     }
 }
 
-export const newUserPendingGlob = () => ({ type: NEW_USER_PENDING });
-export const newUserFulfilled = (data) => ({ type: NEW_USER_FULFILLED, payload: data });
-export const newUserRejected = (error) => ({ type: NEW_USER_REJECTED, payload: error });
+export const userPendingGlob = () => ({ type: NEW_USER_PENDING });
+export const userFulfilled = (data) => ({ type: NEW_USER_FULFILLED, payload: data });
+export const userRejected = (error) => ({ type: NEW_USER_REJECTED, payload: error });
 
 export const getCurrentUser = async (userId) => {
     try {
         if(!userId){
             throw new Error("User ID is required");
         }
-        console.log("Fetching user data with ID:", userId);
+        const response = await fetch(`${apiBaseUrl()}/user/show/${userId}`);
+        const parseResponse = await response.json();
+        return parseResponse.data;
     } catch (error) {
         return error.response;
     }
