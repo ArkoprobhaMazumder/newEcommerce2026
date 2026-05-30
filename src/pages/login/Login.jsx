@@ -1,4 +1,5 @@
 
+import { handelUser } from '../../helper/util';
 import { userLogin } from './login.duck';
 import css from './login.module.css';
 import {useState} from 'react';
@@ -13,7 +14,9 @@ const Login = () => {
     const handelSignInForm = (e) => {
         e.preventDefault();
         userLogin(userData).then((response)=>{
-            console.log(111,response);
+           const res= handelUser(false, response.data);
+           if(res) window.location.href = '/';
+           else window.alert('Login failed. Please check your credentials and try again.');
         });
     }
     return (

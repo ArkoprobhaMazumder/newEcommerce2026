@@ -12,6 +12,7 @@ const OrderComponent = React.lazy(() => import('./pages/order/Order'));
 const CollectionComponent = React.lazy(() => import('./pages/collection/Collection'));
 const LoginComponent = React.lazy(() => import('./pages/login/Login'));
 const SignUpComponent = React.lazy(() => import('./pages/signup/SignUp'));
+const ProductDetailComponent = React.lazy(() => import('./Components/productDetail/ProductDetail'));
 
 
 const App = () => {
@@ -39,7 +40,11 @@ const App = () => {
         },
         {
           path: 'collection',
-          element: <CollectionComponent />
+          element: <CollectionComponent />,
+        },
+        {
+          path: 'collection/product/:id',
+          element: <ProductDetailComponent />
         },
         {
           path: 'login',
