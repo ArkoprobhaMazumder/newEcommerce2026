@@ -10,8 +10,6 @@ const Collection = () => {
   const [selectedSubCategory, setSelectedSubCategory] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState('relevant');
 
-  console.log(productList);
-
   const categories = ['men', 'women', 'kids'];
   const types = ['topwear', 'bottomwear', 'winterwear'];
 
