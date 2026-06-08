@@ -1,21 +1,19 @@
 import css from './productdetail.module.css';
 import { useLocation } from 'react-router-dom';
-import {products} from '../../assets/images/frontend_assets/assets';
+import { products, assets } from '../../assets/images/frontend_assets/assets';
 import { useState } from 'react';
 
 const ProductDetail = () => {
 
-  const [imageIndex,setImageIndex]=useState(0);
-  const [selectedSize,setSelectedSize]=useState('');
+  const [imageIndex, setImageIndex] = useState(0);
+  const [selectedSize, setSelectedSize] = useState('');
 
   const location = useLocation();
   const productId = location.pathname.replace('/collection/product/', '') || '';
   const product = products.find(p => p._id === productId);
-  const {bestseller,category,description,image,name,price,sizes,subCategory} = product || {};
-  console.log(bestseller);
+  const { bestseller, category, description, image, name, price, sizes, subCategory } = product || {};
 
-
-
+ 
   return (
     <div className='container'>
       <div className={css.productDetailContainer}>
@@ -40,10 +38,25 @@ const ProductDetail = () => {
             </div>
             <div className={css.productInfo}>
               <p className={css.productName}>{name}
-                  {bestseller && <span className={css.bestsellerBadge}>Bestseller</span>}
+                {bestseller && <span className={css.bestsellerBadge}>Bestseller</span>}
               </p>
               <div className={css.starCount}>
-                <div className={css.starBox}></div>
+                <div className={css.starBox}>
+                  {
+                    Array.from({ length: 5 }, (_, index) => {
+                      if (index < 4) {
+                        return <span key={index}>
+                          <img src={assets.star_icon} alt='star' loading="lazy" />
+                        </span>
+                      }
+                      return (
+                        <span key={index}>
+                          <img src={assets.star_dull_icon} alt='star' loading="lazy" />
+                        </span>
+                      )
+                    })
+                  }
+                </div>
                 <p className={css.reviewCount}>(122)</p>
               </div>
               <p className={css.price}>${price.toFixed(2)}</p>
@@ -52,14 +65,14 @@ const ProductDetail = () => {
                 <p className={css.sizeLabel}>Select Size</p>
                 <div className={css.sizeOptions}>
                   {sizes.map((size, index) => (
-                    <span key={index} className={css.sizeOption} onClick={() => setSelectedSize(size)}>
+                    <span key={index} className={selectedSize === size ? css.activeSize : css.sizeOption} onClick={() => setSelectedSize(size)}>
                       {size}
                     </span>
                   ))}
                 </div>
               </div>
               <button className={css.addToCartButton}>Add to Cart</button>
-              <hr/>
+              <hr />
               <div className={css.productWarrentyBox}>
                 <ul>
                   <li className={css.productWarrentyItem}>100% Original product.</li>
