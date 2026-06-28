@@ -2,6 +2,7 @@ import css from './productdetail.module.css';
 import { useLocation } from 'react-router-dom';
 import { products, assets } from '../../assets/images/frontend_assets/assets';
 import { useState } from 'react';
+import Section from '../section/Section';
 
 const ProductDetail = () => {
 
@@ -12,8 +13,9 @@ const ProductDetail = () => {
   const productId = location.pathname.replace('/collection/product/', '') || '';
   const product = products.find(p => p._id === productId);
   const { bestseller, category, description, image, name, price, sizes, subCategory } = product || {};
+  console.log(category, subCategory);
 
- 
+
   return (
     <div className='container'>
       <div className={css.productDetailContainer}>
@@ -82,8 +84,22 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
-          <div className={css.productDescription}></div>
-          <div className={css.relatedProducts}></div>
+          <div className={css.productDescription}>
+            <div className={css.descFirst}>
+              <span>Description</span>
+              <span>Reviews(122)</span>
+            </div>
+            <div className={css.descSecond}>
+              <p>An e-commerce website is an online platform that facilitates the buying and selling of products or services over the internet. It serves as a virtual marketplace where businesses and individuals can showcase their products, interact with customers, and conduct transactions without the need for a physical presence. E-commerce websites have gained immense popularity due to their convenience, accessibility, and the global reach they offer.</p>
+              <p>E-commerce websites typically display products or services along with detailed descriptions, images, prices, and any available variations (e.g., sizes, colors). Each product usually has its own dedicated page with relevant information.</p>
+            </div>
+          </div>
+          <div className={css.relatedProducts}>
+            <Section
+              sectionTitle="RELATED PRODUCTS"
+              products={products.filter(product => product.category === category && product.subCategory === subCategory).slice(2, 6)}
+            />
+          </div>
         </div>
       </div>
     </div>
